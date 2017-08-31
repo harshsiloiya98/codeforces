@@ -13,3 +13,30 @@ letters, its length is no less that 1 and no more than 100 letters.
 Output
 If Vasya managed to say hello, print "YES", otherwise print "NO". */
 
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+int main() {
+	string s;
+	cin >> s;
+	string flag = "YES";
+	string tester = "hello";
+	size_t i = 0, j = 0;
+	while (i < s.length() && j < 5) {
+		i = s.find(tester[j]);
+		if (i == string::npos) {
+			flag = "NO";
+			break;
+		}
+		j++;
+		s = s.substr(i + 1);
+		i = 0;
+	}
+	if (i == s.length() && j != 5)
+		cout << "NO" << endl;
+	else
+		cout << flag << endl;
+	return 0;
+}
